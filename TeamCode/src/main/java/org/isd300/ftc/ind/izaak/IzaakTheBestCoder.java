@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
-@Autonomous(name="YeetBot: Auto Drive By Time", group="Pushbot")
+@Autonomous(name="IzaakBot", group="Izaak")
 
 public class IzaakTheBestCoder extends LinearOpMode {
 
