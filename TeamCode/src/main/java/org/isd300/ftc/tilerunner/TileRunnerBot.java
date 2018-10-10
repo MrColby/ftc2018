@@ -88,10 +88,10 @@ public class TileRunnerBot {
         }
 
 
-        this.wheelFrontRightMotor.setPower(frontRight);
-        this.wheelFrontLeftMotor.setPower(frontLeft);
-        this.wheelBackRightMotor.setPower(rearRight);
-        this.wheelBackLeftMotor.setPower(rearLeft);
+        this.wheelFrontRightMotor.setPower(-1*frontRight);
+        this.wheelFrontLeftMotor.setPower(-1*frontLeft);
+        this.wheelBackRightMotor.setPower(-1*rearRight);
+        this.wheelBackLeftMotor.setPower(-1*rearLeft);
 
 
 
