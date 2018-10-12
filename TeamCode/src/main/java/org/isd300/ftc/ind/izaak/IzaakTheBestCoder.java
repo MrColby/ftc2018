@@ -20,20 +20,38 @@ public class IzaakTheBestCoder extends LinearOpMode {
 
         this.waitForStart();
 
-        totBot.drive(100, 100, 100, 100);
+        totBot.drive(10, 10, 10, 10);
         timer.reset();
-        while(timer.milliseconds()<3000 && this.opModeIsActive()) {
+        while(timer.milliseconds()<1000 && this.opModeIsActive()) {
         }
 
         //fl, fr, rl, rr
-        totBot.drive(100, 0, 100, 0);
+        totBot.drive(0, 100, 0, 100);
         timer.reset();
-        while(timer.milliseconds()<3000 && this.opModeIsActive()) {
+        while(timer.milliseconds()<2500 && this.opModeIsActive()) {
         }
 
-        totBot.drive(-73, 0, 0, -23);
+        totBot.drive(100, 0, 100, 0);
         timer.reset();
-        while(timer.milliseconds()<3000 && this.opModeIsActive()) {
+        while(timer.milliseconds()<1000 && this.opModeIsActive()) {
+        }
+
+        totBot.drive(0, 100, 0, 100);
+        timer.reset();
+        while(timer.milliseconds()<1575 && this.opModeIsActive()) {
+        }
+
+        totBot.drive(100, 100, 100, 100);
+        timer.reset();
+        while(timer.milliseconds()<750 && this.opModeIsActive()) {
+        }
+        totBot.drive(75, -75, 75, -75);
+        timer.reset();
+        while(timer.milliseconds()<400 && this.opModeIsActive()) {
+        }
+        totBot.drive(0, 100, 0, 100);
+        timer.reset();
+        while(timer.milliseconds()<700 && this.opModeIsActive()) {
         }
 
         totBot.drive(0, 0, 0, 0);
