@@ -24,10 +24,10 @@ public class KamiBot extends LinearOpMode {
         timer.reset();
         while(timer.milliseconds()<1700 && this.opModeIsActive()) {
         }
-
+// Happy Doughnut
         totBot.drive(10, -10, 10, -10);
         timer.reset();
-        while(timer.milliseconds()<400 && this.opModeIsActive()) {
+        while(timer.milliseconds()<1400 && this.opModeIsActive()) {
         }
 
         totBot.drive(10, 10, 10, 10);
