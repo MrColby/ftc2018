@@ -4,7 +4,9 @@ import android.graphics.Color;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -34,6 +36,8 @@ public class TileRunnerBot {
     // gyroscope
     private BNO055IMU imu;
 
+    private ColorSensor eyeStalkColorSensor;
+    private DistanceSensor eyeStalkDistanceSensor;
 
 
 
@@ -64,8 +68,30 @@ public class TileRunnerBot {
         this.telemetry = elemtry;
         this.intializewheels();
         this.initializeVuforia();
+        this.initializeColorSensor();
+    }
+
+    private void initializeColorSensor() {
+        this.eyeStalkColorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
+        this.eyeStalkDistanceSensor = hardwareMap.get(DistanceSensor.class, "color_sensor");
+    }
+
+    public Color getEyestalkColor() {
 
 
+        message("Color sensor", eyeStalkColorSensor.red()+", " + eyeStalkColorSensor.green() + ", " + eyeStalkColorSensor.blue());
+        if(eyeStalkColorSensor.red() > eyeStalkColorSensor.green() && eyeStalkColorSensor.red() > eyeStalkColorSensor.blue()  ) {
+            return Color.RED;
+        }
+        if(eyeStalkColorSensor.green() > eyeStalkColorSensor.red() && eyeStalkColorSensor.green() > eyeStalkColorSensor.blue()  ) {
+            return Color.GREEN;
+        }
+        if(eyeStalkColorSensor.blue() > eyeStalkColorSensor.green() && eyeStalkColorSensor.blue() > eyeStalkColorSensor.red()  ) {
+            return Color.BLUE;
+        }
+
+
+        return Color.UNKNOWN;
 
     }
 
