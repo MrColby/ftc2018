@@ -19,7 +19,7 @@ public class KamiBot extends LinearOpMode {
         totBot = new TileRunnerBot(this.hardwareMap,this.telemetry);
 
         this.waitForStart();
-
+        this.totBot.getEyestalkColor();
         totBot.drive(10, 10, 10, 20);
         timer.reset();
         while(timer.milliseconds()<1700 && this.opModeIsActive()) {
