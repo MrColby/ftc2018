@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
-@Autonomous(name="YeetBot: Auto Drive By Time", group="Pushbot")
+@Autonomous(name="DanaColorTest", group="Dana")
 
 public class DanaBot01 extends LinearOpMode {
 
@@ -20,9 +20,10 @@ public class DanaBot01 extends LinearOpMode {
 
         this.waitForStart();
 
-        totBot.drive(50, 50, 50, 50);
-        timer.reset();
-        while(timer.milliseconds()<3000 && this.opModeIsActive()) {
+
+
+        while(this.opModeIsActive()) {
+            totBot.getEyestalkColor();
         }
 
 
