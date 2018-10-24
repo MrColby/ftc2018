@@ -79,8 +79,12 @@ public class TileRunnerBot {
     public int getRed() {
         return eyeStalkColorSensor.red();
     }
-
-
+    public int getBlue(){
+        return eyeStalkColorSensor.blue();
+    }
+    public int getGreen(){
+        return eyeStalkColorSensor.green();
+    }
 
     public Color getEyestalkColor() {
 
