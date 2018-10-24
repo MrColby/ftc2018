@@ -76,7 +76,15 @@ public class TileRunnerBot {
         this.eyeStalkDistanceSensor = hardwareMap.get(DistanceSensor.class, "color_sensor");
     }
 
+    public int getRed() {
+        return eyeStalkColorSensor.red();
+    }
+
+
+
     public Color getEyestalkColor() {
+
+
 
 
         message("Color sensor", eyeStalkColorSensor.red()+", " + eyeStalkColorSensor.green() + ", " + eyeStalkColorSensor.blue());
