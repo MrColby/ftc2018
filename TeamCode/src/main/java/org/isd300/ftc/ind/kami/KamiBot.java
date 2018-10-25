@@ -16,6 +16,44 @@ public class KamiBot extends LinearOpMode {
 
     public void runOpMode() {
 
+        boolean foundDistance = false;
+
+        totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
+        //wait for start button
+        this.waitForStart();
+
+        while (this.opModeIsActive() ) {
+
+            totBot.drive(0.125, 0.125, 0.125, 0.125);
+
+            //drive for a 1/4 of a second
+            timer.reset();
+            while (timer.milliseconds() < 250) {
+
+            }
+
+            double distance = this.totBot.getDistance();
+            String msg = "Distance=" + distance;
+            this.totBot.message("", msg);
+
+            if (distance > 2) {
+                foundDistance = true;
+                totBot.drive(0, 0, 0, 0);
+            }
+
+            int red = this.totBot.getRed();
+            int blue = this.totBot.getBlue();
+            int green = this.totBot.getGreen();
+
+            msg = "Red=" + red + "Blue=" + blue + "Green=" + green;
+            this.totBot.message("", msg);
+
+
+        }
+    }
+
+    public void runOpModeColor() {
+
         totBot = new TileRunnerBot(this.hardwareMap,this.telemetry);
         //wait for start button
         this.waitForStart();
