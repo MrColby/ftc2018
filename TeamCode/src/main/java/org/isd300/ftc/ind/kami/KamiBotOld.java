@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
 @Disabled
@@ -36,7 +37,7 @@ public class KamiBotOld extends LinearOpMode {
 
             }
 
-            double distance = this.totBot.getDistance();
+            double distance = this.totBot.getDistance(DistanceUnit.CM);
             String msg = "Distance=" + distance;
             this.totBot.message("", msg);
 
@@ -107,7 +108,7 @@ public class KamiBotOld extends LinearOpMode {
                 foundYellow = true;
             }
 
-            double distance = this.totBot.getDistance();
+            double distance = this.totBot.getDistance(DistanceUnit.CM);
             String msg = "Distance=" + distance;
             this.totBot.message("", msg);
 

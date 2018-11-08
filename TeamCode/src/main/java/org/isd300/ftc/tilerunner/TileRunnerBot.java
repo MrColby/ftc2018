@@ -86,8 +86,8 @@ public class TileRunnerBot {
         return eyeStalkColorSensor.green();
     }
 
-    public double getDistance() {
-        return this.eyeStalkDistanceSensor.getDistance(DistanceUnit.CM);
+    public double getDistance(DistanceUnit unit) {
+        return this.eyeStalkDistanceSensor.getDistance(unit);
     }
 
     public Color getEyestalkColor() {
