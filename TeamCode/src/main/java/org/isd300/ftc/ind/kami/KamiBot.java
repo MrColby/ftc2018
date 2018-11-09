@@ -22,11 +22,6 @@ public class KamiBot extends LinearOpMode {
         //wait for start button
         this.waitForStart();
 
-
-
-
-
-
         boolean yellow = checkOutTargetOne();
         if (yellow) {
             String msg = "YaY";
@@ -36,9 +31,7 @@ public class KamiBot extends LinearOpMode {
         else{
             String msg = "BoO";
             this.totBot.message("", msg);
-
         }
-
     }
 
     private boolean checkOutTargetOne(){
@@ -49,7 +42,6 @@ public class KamiBot extends LinearOpMode {
 
         timer.reset();
         while(timer.milliseconds() < 3000){
-
         }
 
         totBot.drive(0.125, 0.125, 0.125, 0.125);
@@ -57,17 +49,13 @@ public class KamiBot extends LinearOpMode {
         boolean foundYellow = false;
 
         while(distance == DistanceUnit.infinity){
-
         }
-
 
         while(distance > 2){
             distance = this.totBot.getDistance(DistanceUnit.CM);
             msg = "Distance=" + distance;
             this.totBot.message("", msg);
         }
-
-        totBot.drive(0, 0, 0, 0);
 
         int red = this.totBot.getRed();
         int blue = this.totBot.getBlue();

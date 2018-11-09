@@ -26,13 +26,13 @@ public class KamiTestBot extends LinearOpMode {
 
         timer.reset();
         while(timer.milliseconds() < 3000){
-            }
+        }
+
+        double distance = this.totBot.getDistance(DistanceUnit.METER);
+        String msg = "Distance=" + distance;
+        this.totBot.message("", msg);
+
         totBot.drive(0, 0, 0, 0);
-
-
     }
-
-
-
 
 }
