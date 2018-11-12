@@ -8,7 +8,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
 @Autonomous(name="ColbyBot", group="Colby")
-
 public class ColbyBot extends LinearOpMode {
 
     // this is the robot. Make sure you create a new instance, or you'll learn the lesson of the NullPointerException
@@ -46,16 +45,16 @@ public class ColbyBot extends LinearOpMode {
         }
         else {
             yellow = checkOutTargetTwo();
-            /*if (yellow) {
+            if (yellow) {
                 // knock over the target. Drive to base.
             }
             else {
                 yellow = checkOutTargetThree();
-                if (hellow) {
+                if (yellow) {
                 // knock over the target
                 }
                 // drive to base
-            }*/
+            }
         }
 
         // make sure we're stopped
@@ -67,7 +66,7 @@ public class ColbyBot extends LinearOpMode {
 
         // start driving.
         // frontLeft, frontRight, rearLeft, rearRight
-        totBot.drive(0.25, 0.25, 0.25, 0.25);
+        totBot.drive(0.125, 0.125, 0.125, 0.125);
 
         // drive to target #1. Add turns, etc.
         // This is not sensor driving.
