@@ -71,37 +71,49 @@ public class KamiBot extends LinearOpMode {
         // frontLeft, frontRight, rearLeft, rearRight
         totBot.drive(0.125, 0.125, 0.125, 0.125);
 
+        while (this.opModeIsActive() && Double.isNaN(this.distance)) {
+            this.timer.reset();
+            while (timer.milliseconds()< 250) {
+                }
+            readColorSensor(DistanceUnit.CM);
+
+        }
+
         // drive to target #1. Add turns, etc.
         // This is not sensor driving.
         // reset the timer, and then do nothing for 3 seconds
-        this.timer.reset();
+
 
         // notice that we can escape this loop EITHER by the timer, or if someone pushes the stop button.
         // every loop must include the opModeIsActive call
         // add turns, etc, so that we are lined up with the target.
-        while (this.opModeIsActive() && this.timer.milliseconds() < 3000) {
 
-        }
+
 
         // this gets a current reading of distance and three primary colors
-        readColorSensor(DistanceUnit.CM);
 
+
+        //if (distance > 2) {
+            //totBot.drive(0, 0, 0, 0);
+        //}
+
+        //else{
+            //totBot.drive(0.125,0.125,0.125,0.125);
+    }
         // drive until we're close enough to get a measurement
-        while (this.opModeIsActive() && Double.isNaN(distance)) {
-            readColorSensor(DistanceUnit.CM);
-        }
+
 
         // now drive until we're at the distance that we want
-        while (this.opModeIsActive() && distance > 10) {
-            readColorSensor(DistanceUnit.CM);
-        }
+        //while (this.opModeIsActive() && distance > 10) {
+            //readColorSensor(DistanceUnit.CM);
+
 
         // we're there. Switch off the motors.
         totBot.drive(0.0, 0.0, 0.0, 0.0);
 
         // if wrong color, return false
         // if right color, return true
-        return false;
+        //return false;
 
 
     }
