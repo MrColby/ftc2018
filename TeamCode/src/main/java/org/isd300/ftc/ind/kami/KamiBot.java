@@ -99,7 +99,7 @@ public class KamiBot extends LinearOpMode {
 
         //else{
             //totBot.drive(0.125,0.125,0.125,0.125);
-    }
+   // }
         // drive until we're close enough to get a measurement
 
 
