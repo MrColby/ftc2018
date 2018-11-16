@@ -40,14 +40,18 @@ public class KamiBot extends LinearOpMode {
         // drive to base
 
         boolean yellow = checkOutTargetOne();
+        this.readColorSensor(DistanceUnit.CM);
+
+
         if (yellow) {
             totBot.drive(0.125, 0.125, 0.125, 0.125);
             this.timer.reset();
-            while (this.opModeIsActive() && this.timer.milliseconds() < 3000) {
+            while (this.opModeIsActive() && this.timer.milliseconds() < 1000) {
 
             }
         }
         else {
+            yellow = checkOutTargetTwo();
             if (yellow) {
                 // knock over the target. Drive to base.
             }
@@ -69,15 +73,18 @@ public class KamiBot extends LinearOpMode {
 
         // start driving.
         // frontLeft, frontRight, rearLeft, rearRight
-        totBot.drive(0.125, 0.125, 0.125, 0.125);
+
 
         while (this.opModeIsActive() && Double.isNaN(this.distance)) {
+            totBot.drive(0.125, 0.125, 0.125, 0.125);
             this.timer.reset();
-            while (timer.milliseconds()< 250) {
-                }
+            while (this.opModeIsActive() && timer.milliseconds()< 250) {
+            }
+            totBot.drive(0,0,0,0);
             readColorSensor(DistanceUnit.CM);
 
         }
+        boolean isYellow = (red > 10 && blue <15 && green > 10);
 
         // drive to target #1. Add turns, etc.
         // This is not sensor driving.
@@ -113,7 +120,7 @@ public class KamiBot extends LinearOpMode {
 
         // if wrong color, return false
         // if right color, return true
-        //return false;
+        return isYellow;
 
 
     }
