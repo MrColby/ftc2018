@@ -69,12 +69,14 @@ public class KamiBot extends LinearOpMode {
 
         // start driving.
         // frontLeft, frontRight, rearLeft, rearRight
-        totBot.drive(0.125, 0.125, 0.125, 0.125);
+
 
         while (this.opModeIsActive() && Double.isNaN(this.distance)) {
+            totBot.drive(0.125, 0.125, 0.125, 0.125);
             this.timer.reset();
             while (timer.milliseconds()< 250) {
-                }
+            }
+            totBot.drive(0,0,0,0);
             readColorSensor(DistanceUnit.CM);
 
         }
@@ -113,7 +115,7 @@ public class KamiBot extends LinearOpMode {
 
         // if wrong color, return false
         // if right color, return true
-        //return false;
+        return false;
 
 
     }
