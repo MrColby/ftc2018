@@ -2,6 +2,7 @@ package org.isd300.ftc.team;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -12,13 +13,22 @@ public class TotBot {
     // telemetry sends messages to the phone display
     private Telemetry telemetry;
 
+    public Servo gate    = null;
+
+
     private DcMotor wheelLeftMotor;
     private DcMotor wheelRightMotor;
 
-    public TotBot(HardwareMap ardwareMap, Telemetry elemtry) {
-        this.hardwareMap = ardwareMap;
+    public TotBot(HardwareMap hardwareMap, Telemetry elemtry) {
+        this.hardwareMap = hardwareMap;
         this.telemetry = elemtry;
         this.intializewheels();
+        this.initializegate();
+    }
+
+    private void initializegate(){
+        gate  = hardwareMap.get(Servo.class, "left_hand");
+
     }
 
     private void intializewheels() {
@@ -51,6 +61,9 @@ public class TotBot {
 
 
 
+    }
+    public void closegate(){
+        this.gate.setPosition(0.5);
     }
 
 
