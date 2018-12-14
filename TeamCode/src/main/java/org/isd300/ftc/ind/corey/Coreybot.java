@@ -1,73 +1,64 @@
 package org.isd300.ftc.ind.corey;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
-@Autonomous(name="Coreybot", group="Corey")
 public class Coreybot extends LinearOpMode {
 
-    // this is the robot. Make sure you create a new instance, or you'll learn the lesson of the NullPointerException
     private TileRunnerBot totBot;
 
-    // any time you need to perform some action for an amount of time, use this class-scoped timer.
     private ElapsedTime timer = new ElapsedTime();
 
     public void runOpMode() {
 
-        // create a robot instance
-        totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
+        this.totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
 
-        // wait for a user to push the start button
         this.waitForStart();
 
-        //this.run1();
+        boolean success = driveStraightByTime(0.35, 500);
 
-        //this.pause(1000);
+        success = turnByTime(0.5, 500);
 
-        this.run2();
+        success = driveStraightByTime(0.5, 500);
 
+        success = turnByTime(0.5, 500);
 
-
-
-
-
+        this.totBot.drive(0, 0, 0, 0);
 
     }
 
-    private void pause(int millis) {
+    private boolean driveStraightByTime(double power, int time) {
+
+
+        this.totBot.drive(power, power, power, power);
+
         this.timer.reset();
-        while (this.timer.milliseconds() < millis) {
-            // do nothing
-        }
+
+        while (this.opModeIsActive() && this.timer.milliseconds() < time)
+
+            this.totBot.drive(0, 0, 0, 0);
+
+        return true;
 
     }
 
-    private void run1() {
-        // drive straight
-        totBot.drive(0.5, 0.5, 0.5, 0.5);
+    private boolean turnByTime(double power, int time) {
+
+        this.totBot.drive(power, power, power, power);
 
         this.timer.reset();
-        while (this.timer.milliseconds() < 1000) {
-            // do nothing
+
+        while (this.opModeIsActive() && this.timer.milliseconds() < time) {
+
+            this.totBot.drive(0, 0, 0, 0);
+
         }
 
-        totBot.drive(0.0, 0.0, 0.0, 0.0);
-    }
+        return true;
 
-    public void run2() {
-        //
-        totBot.drive(-0.5, 0.5, -0.5, 0.5);
-
-        this.timer.reset();
-        while (this.timer.milliseconds() < 1000) {
-            // do nothing
-        }
-
-        totBot.drive(0.0, 0.0, 0.0, 0.0);
     }
 
 }
