@@ -56,7 +56,7 @@ public class TotBot {
         }
 
 
-        this.wheelRightMotor.setPower(right);
+        this.wheelRightMotor.setPower(-1*right);
         this.wheelLeftMotor.setPower(left);
 
 
