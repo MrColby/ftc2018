@@ -1,10 +1,13 @@
 package org.isd300.ftc.ind.corey;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
 import org.isd300.ftc.tilerunner.TileRunnerBot;
+@TeleOp(name="Coreybot", group="Corey")
 
 public class Coreybot extends LinearOpMode {
 
@@ -44,6 +47,7 @@ public class Coreybot extends LinearOpMode {
         return true;
 
     }
+
 
     private boolean turnByTime(double power, int time) {
 
