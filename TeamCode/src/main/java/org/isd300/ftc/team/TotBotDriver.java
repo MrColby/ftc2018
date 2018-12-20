@@ -23,6 +23,10 @@ public class TotBotDriver extends LinearOpMode {
         double left = this.gamepad1.left_stick_y;
 
         totBot.drive(left, right);
+
+        if (this.gamepad1.a){
+            this.totBot.closegate();
+        }
     }
 
 
