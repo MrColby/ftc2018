@@ -27,7 +27,15 @@ public class DanaBot extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        // create a robot instance
+        this.totbot = new TileRunnerBot (this. hardwareMap, this.telemetry) ;
+
+        // wait for a user 
+
     }
 
-// any time you need
+// any time you need to perform some action for an amount of time, use this class-scoped timer.
+    private ElapsedTime timer = new ElapsedTime();
+
+
 }
