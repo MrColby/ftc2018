@@ -1,8 +1,11 @@
 package org.isd300.ftc.ind.kami;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.isd300.ftc.tilerunner.TileRunnerBot;
+
+@Autonomous(name="Idk", group="Kami")
 public class Idk extends LinearOpMode {
     private TileRunnerBot totBot;
     private ElapsedTime timer = new ElapsedTime();
@@ -10,10 +13,10 @@ public class Idk extends LinearOpMode {
     public void runOpMode() {
         this.totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
         this.waitForStart();
-        boolean success = driveStraightByTime(0.35, 500);
-        success = turnByTime(0.5, 500);
-        success = driveStraightByTime(0.5, 500);
-        success = turnByTime(0.5, 500);
+        boolean success = driveStraightByTime(0.35, 8000);
+        success = turnByTime(0.5, 8000);
+        success = driveStraightByTime(0.5, 8000);
+        success = turnByTime(0.5, 8000);
         this.totBot.drive(0, 0, 0, 0);
     }
 
