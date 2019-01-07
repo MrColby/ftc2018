@@ -4,9 +4,30 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.isd300.ftc.tilerunner.TileRunnerBot;
 
+/*
+
+      Big ideas:
+          * java is object oriented
+          * a class represents an object
+          * packages organize files hierarchically
+          * variables can be class-scoped or method scoped.
+          * variables can be declared only once within a scope
+          * methods are actions. They may change variables; they may change behavior.
+          *     They can organize a program so that it's easier to understand.
+      TODO: Your assignments
+      1) Make a method called stopRobot(). Replace the last action with a call to this method.
+      2) Make a method called driveStraightByDistance(). Have it take power and inches as parameters. Replace the driveStraight calls.
+      3) Make a method called turnByDegrees(). Have it take power and degrees as parameters. Replace the turn calls.
+      4) Use your new methods to have the robot drive in a star pattern, always moving forwards.
+
+      Note: / means divide. 144 / 12 will equal 12.
+            * means multiply. 12 * 12 will equal 144.
+            *
+
+
+ */
 @Autonomous(name="Coreybot", group="Corey")
 public class Coreybot extends LinearOpMode {
 
@@ -16,124 +37,79 @@ public class Coreybot extends LinearOpMode {
     // any time you need to perform some action for an amount of time, use this class-scoped timer.
     private ElapsedTime timer = new ElapsedTime();
 
-    // declare these variables at the class scope. That means that every method can read them.
-    // make them private so that only this class can interact with them.
-    private double distance = Double.NaN;
-    private int red = 0;
-    private int green = 0;
-    private int blue = 0;
-
     public void runOpMode() {
 
         // create a robot instance
-        totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
+        this.totBot = new TileRunnerBot(this.hardwareMap, this.telemetry);
 
         // wait for a user to push the start button
         this.waitForStart();
 
+        // drive forward 10 feet
+        boolean success = driveStraightByTime(0.35, 9000);
 
+        // turn clockwise 90 degrees
+        success = turnByTime(-0.5, 700);
 
-        // if 1 is right, celebrate and knock over the target. Drive to base.
-        // else drive to target #2
-        // if 2 is right, celebrate and knock over the target. Drive to base.
-        // else drive to target #3. If 3 is right, celebrate and knock over the target.
-        // drive to base
+        // drive backward 10 feet
+        success = driveStraightByTime(0, 0);
 
-        boolean yellow = checkOutTargetOne();
-        if (yellow) {
-            // knock over the target. Drive to base.
-        }
-        else {
-            yellow = checkOutTargetTwo();
-            if (yellow) {
-                // knock over the target. Drive to base.
-            }
-            else {
-                yellow = checkOutTargetThree();
-                if (yellow) {
-                    // knock over the target
-                }
-                // drive to base
-            }
-        }
+        // turn counterclockwise 90 degrees
+        success = turnByTime(0.5, 700);
 
-        // make sure we're stopped
-        totBot.drive(0.0, 0.0, 0.0, 0.0);
+        success = driveStraightByTime(-0.5, 7000);
 
+        // make sure the motors are really off. Just in case...
+        this.totBot.drive(0,0,0,0);
     }
 
-    private boolean checkOutTargetOne() {
+    private boolean driveStraightByTime(double power, int time) {
 
-        // start driving.
-        // frontLeft, frontRight, rearLeft, rearRight
-        totBot.drive(0.135, 0.135, 0.135, 0.135);
+        // give power to the motors. Vroom!
+        this.totBot.drive(power, power, power, power);
 
-        // drive to target #1. Add turns, etc.
-        // This is not sensor driving.
-        // reset the timer, and then do nothing for 3 seconds
+        // reset the timer so it's counting from 0
         this.timer.reset();
 
         // notice that we can escape this loop EITHER by the timer, or if someone pushes the stop button.
         // every loop must include the opModeIsActive call
-        // add turns, etc, so that we are lined up with the target.
-        while (this.opModeIsActive() && this.timer.milliseconds() < 8000) {
-
+        while (this.opModeIsActive() && this.timer.milliseconds() < time) {
+            // do nothing until the timer has reached at least the time
         }
 
+        // and stop the robot!
+        this.totBot.drive(0,0,0,0);
 
+        //true means success. What would false mean?
+        return true;
+    }
 
-        /*
-        // this gets a current reading of distance and three primary colors
-        readColorSensor(DistanceUnit.CM);
+    /*
+          This method is broken intentionally. Your challenge is to make it so that the robot actually turns.
+     */
+    private boolean turnByTime(double power, int time) {
 
-        // drive until we're close enough to get a measurement
-        while (this.opModeIsActive() && Double.isNaN(distance)) {
-            readColorSensor(DistanceUnit.CM);
+        // give power to the motors. Vroom!
+        this.totBot.drive(power, -power, power, -power);
+
+        // reset the timer so it's counting from 0
+        this.timer.reset();
+
+        // notice that we can escape this loop EITHER by the timer, or if someone pushes the stop button.
+        // every loop must include the opModeIsActive call
+        while (this.opModeIsActive() && this.timer.milliseconds() < time) {
+            // do nothing until the timer has reached at least the time
         }
 
-        // now drive until we're at the distance that we want
-        while (this.opModeIsActive() && distance > 10) {
-            readColorSensor(DistanceUnit.CM);
-        }
-        */
+        // and stop the robot!
+        this.totBot.drive(0,0,0,0);
 
-        // we're there. Switch off the motors.
-        totBot.drive(0.0, 0.0, 0.0, 0.0);
-
-        // if wrong color, return false
-        // if right color, return true
-        return false;
-
-
+        //true means success. What would false mean?
+        return true;
     }
-
-
-    private boolean checkOutTargetTwo() {
-
-
-        return false;
-
-
-    }
-
-    private boolean checkOutTargetThree() {
-
-
-        return false;
-
-
-    }
-
-    private void readColorSensor(DistanceUnit distanceUnit) {
-        distance = this.totBot.getDistance(distanceUnit);
-        red = this.totBot.getRed();
-        green = this.totBot.getGreen();
-        blue = this.totBot.getBlue();
-        String msg = "Red: " + red + " Green: " + green + " Blue: " + blue + " Distance: " + distance;
-        this.totBot.message("", msg);
-    }
-
 
 
 
 }
+
+
