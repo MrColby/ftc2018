@@ -46,18 +46,18 @@ public class Coreybot extends LinearOpMode {
         this.waitForStart();
 
         // drive forward 10 feet
-        boolean success = driveStraightByTime(0.35, 9000);
+        boolean success = driveStraightByTime(0.5, 1000);
 
         // turn clockwise 90 degrees
-        success = turnByTime(-0.5, 700);
+        success = turnByTime(-0.5, 1130);
 
         // drive backward 10 feet
-        success = driveStraightByTime(0, 0);
+        success = driveStraightByTime(0.5, 1500);
 
         // turn counterclockwise 90 degrees
-        success = turnByTime(0.5, 700);
+        success = turnByTime(0, 0);
 
-        success = driveStraightByTime(-0.5, 7000);
+        success = turnByTime(4.0, 500);
 
         // make sure the motors are really off. Just in case...
         this.totBot.drive(0,0,0,0);
